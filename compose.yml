@@ -2,14 +2,13 @@ version: '3.9'
 services:
   nextjs:
     build:
-      context: .
+      context: ./
       dockerfile: ./docker/Dockerfile
     tty: true
     ports:
       - '3000:3000'
     volumes:
-      - ./app:/app
-      - /app/node_modules
+      - .:/app
     environment:
       - DATABASE_URL=postgres://localhost:5432/weborg?schema=public
     depends_on:

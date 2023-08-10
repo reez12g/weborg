@@ -1,6 +1,7 @@
 FROM node:19.8.1-alpine
 
-WORKDIR /app/
+WORKDIR /app
 
 COPY ./package.json ./
 RUN npm install
+CMD ["npm", "run", "dev"]
