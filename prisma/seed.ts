@@ -1,17 +1,27 @@
 import { PrismaClient } from '@prisma/client';
+import { hash } from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  for (let i: number = 1; i <= 5; i++) {
-    const post = await prisma.company.create({
+  // company seed
+  for (let i: number = 100; i <= 105; i++) {
+    const password = await hash(`password${i}`, 12);
+    const company = await prisma.company.create({
       data: {
         name: `Company${i}`,
         description: `This is a great company ${i}.`,
         address: `Address ${i}`,
+        administrators: {
+          create: {
+            name: `Admin${i}`,
+            email: `abc${i}@abc.com`,
+            password: password,
+          }
+        }
       },
     });
-    console.log({ post });
+    console.log({ company });
   }
 }
 
