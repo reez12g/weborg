@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
     environment:
-      - DATABASE_URL=postgres://localhost:5432/weborg?schema=public
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/weborg?schema=public
     depends_on:
       - postgres
   postgres:
