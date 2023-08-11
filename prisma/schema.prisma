@@ -20,7 +20,7 @@ model Plan {
 }
 
 model Company {
-  id             String   @id @db.Uuid
+  id             String   @id @default(uuid()) @db.Uuid
   name           String
   description    String
   address        String
@@ -30,7 +30,7 @@ model Company {
 }
 
 model Administrator {
-  id          String   @id @db.Uuid
+  id          String   @id @default(uuid()) @db.Uuid
   name        String
   email       String   @unique
   password    String
@@ -42,7 +42,7 @@ model Administrator {
 }
 
 model Survey {
-  id          String         @id @db.Uuid
+  id          String         @id @default(uuid()) @db.Uuid
   name        String
   description String
   createdAt   DateTime       @default(now())
